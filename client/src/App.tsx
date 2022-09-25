@@ -1,15 +1,18 @@
 import React from 'react'
-import Routers from './features/routes/Routers'
-import Layout from './layout/Layout'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
+import Login from './features/auth/pages/Login'
+import Signup from './features/auth/pages/Signup'
 
-type Props = {}
+const queryClient = new QueryClient()
 
-const App = ({ ...props }: Props) => {
+const App = () => {
   return (
-    <Layout {...props}>
-      <Routers />
-    </Layout>
+    <QueryClientProvider client={queryClient}>
+      <Signup />
+      <Login />
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+    </QueryClientProvider>
   )
 }
-
 export default App
