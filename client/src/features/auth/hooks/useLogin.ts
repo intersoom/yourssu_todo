@@ -40,6 +40,7 @@ const useLogin = (): [
     },
     onSuccess: (data, variables) => {
       console.log('success', data, variables)
+      localStorage.setItem('token', data.token)
     },
     onError: (error: AxiosError) => {
       alert(error.response.data.details)
